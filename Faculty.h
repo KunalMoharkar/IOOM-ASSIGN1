@@ -31,6 +31,7 @@ class Faculty : public Person{
         
     public:
         Faculty(string name,Department dept,Designation desig,string house_num,string street_name,string city_name);
+        ~Faculty();
         int getId();
         Designation getDesignation();
         void getCourses();

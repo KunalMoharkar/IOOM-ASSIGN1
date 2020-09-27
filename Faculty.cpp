@@ -16,6 +16,11 @@ Faculty::Faculty(string name,Department dept,Designation desig,string house_num,
     this->courses = new string[6];
 }
 
+Faculty::~Faculty()    //prevent memory leak with dynamic allocation
+{
+    delete[] this->courses;
+}
+
 void Faculty::getCourses()
 {
     int i;

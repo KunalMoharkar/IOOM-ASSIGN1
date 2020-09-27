@@ -23,6 +23,7 @@ class Student : public Person{
         int getId();
     public:
         Student(string name,Department dept,string house_num,string street_name,string city_name);
+        ~Student();
         int getNumCourses();
         double getAvgGrade();
         bool addCourse(string course);

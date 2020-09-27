@@ -15,7 +15,18 @@ Student::Student(string name,Department dept,string house_num,string street_name
         this->num_courses=0;
         this->courses = new string[6];
         this->grade = new int[6];
+        
+        for(int i=0;i<6;i++)       //initialize all grades to zero
+        {
+            this->grade[i] = 0;
+        }
 }   
+
+Student::~Student()   //destructor to avoid memory leak due to dynamic allocation 
+{ 
+    delete[] this->courses;
+    delete[] this->grade;
+}
 
 int Student::getNumCourses()
 {
