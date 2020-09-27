@@ -37,7 +37,9 @@ class Person{
        void changeAddress(string house_num,string street_name,string city_name);
        static int getID();
        void printAddress();
-       virtual void print();
+       virtual void print();    //method virtual for dynamic polymorphism
+       int getMAX();
+
 };
 
 #endif

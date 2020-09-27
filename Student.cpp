@@ -11,12 +11,13 @@
 Student::Student(string name,Department dept,string house_num,string street_name,string city_name)
         :Person(name,dept,house_num,street_name,city_name),
         STUD_ID(Person::getID())
-{   
+{       
+        int maxCourses = this->getMAX();
         this->num_courses=0;
-        this->courses = new string[6];
-        this->grade = new int[6];
+        this->courses = new string[maxCourses];
+        this->grade = new int[maxCourses];
         
-        for(int i=0;i<6;i++)       //initialize all grades to zero
+        for(int i=0;i<maxCourses;i++)       //initialize all grades to zero
         {
             this->grade[i] = 0;
         }
@@ -49,7 +50,7 @@ double Student::getAvgGrade()
 
 bool Student::addCourse(string course)
 {   
-    if(num_courses<6)
+    if(num_courses<this->getMAX())   //if courses less than Max courses
     {
         this->courses[num_courses] = course;
         this->num_courses++;
@@ -59,7 +60,7 @@ bool Student::addCourse(string course)
     return false;
 }
 
-int Student::getCourseIndex(string course)
+int Student::getCourseIndex(string course)   //return the matching course index
 {
     int i;
     for(i=0;i<this->num_courses;i++)
@@ -75,9 +76,14 @@ int Student::getCourseIndex(string course)
 
 bool Student::addCoursesGrade(string course,int grade)
 {   
-    int index = this->getCourseIndex(course);
-    if(index!=-1)
+    if(grade<0||grade>10)   //grade validation
     {
+        return false;
+    }
+
+    int index = this->getCourseIndex(course);
+    if(index!=-1)           //if course exists
+    {   
         this->grade[index] = grade;
         return true;
     }

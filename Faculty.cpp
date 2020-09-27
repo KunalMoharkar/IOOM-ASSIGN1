@@ -10,10 +10,11 @@
 Faculty::Faculty(string name,Department dept,Designation desig,string house_num,string street_name,string city_name)
         :Person(name,dept,house_num,street_name,city_name),
         F_ID(Person::getID())
-{
+{   
+    int maxCourses = this->getMAX();
     this->num_courses = 0;
     this->desig = desig;
-    this->courses = new string[6];
+    this->courses = new string[maxCourses];
 }
 
 Faculty::~Faculty()    //prevent memory leak with dynamic allocation
@@ -34,7 +35,7 @@ void Faculty::getCourses()
 
 bool Faculty::addCourses(string course)
 {
-    if(this->num_courses<6)
+    if(this->num_courses<this->getMAX()) //if courses are less than max limit
     {
         this->courses[this->num_courses] = course;
         this->num_courses++;
@@ -47,13 +48,13 @@ bool Faculty::addCourses(string course)
 bool Faculty::removeCourses(string course)
 {
     int i=0,index;
-    while(i<6&&course.compare(this->courses[i])!=0) //get index of entered course
+    while(i<this->getMAX()&&course.compare(this->courses[i])!=0) //get index of entered course
     {
         i++;
     }
     index = i;
 
-    if(index<6)       //course exists
+    if(index<this->getMAX())       //course exists
     {
         for(i=index;i<this->num_courses-1;i++)
         {

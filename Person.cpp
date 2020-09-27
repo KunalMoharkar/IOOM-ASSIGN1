@@ -8,14 +8,19 @@
 #include<iostream>
 #include "Person.h"
 
-int Person::count = 0;
+int Person::count = 0; //set to zero
 
 Person::Person(string name,Department dept,string house_num,string street_name,string city_name):MAX(6)
 {   
-    count++;
+    count++;        //increment with creation of each object
     this->name = name;
     this->dept = dept;
     this->address.setAddress(house_num,street_name,city_name);   
+}
+
+int Person::getMAX()
+{
+    return this->MAX;
 }
 
 string Person::getName()
