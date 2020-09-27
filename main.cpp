@@ -165,7 +165,7 @@ int main()
                 cin>>grade;
                 if(!stu->addCoursesGrade(course,grade))
                 {
-                    cout<<"No such course exists\n";
+                    cout<<"Not a valid input\n";
                 }
                    
             }

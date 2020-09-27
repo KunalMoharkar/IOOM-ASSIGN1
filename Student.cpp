@@ -140,6 +140,7 @@ void Student::print()
     cout<<"Name:"<<this->getName()<<"\n";
     cout<<"Deparment:"<<this->getDept().name<<"\n";
     cout<<"Student Id:"<<this->STUD_ID<<"\n";
-    cout<<"Number of courses:"<<this->num_courses<<"\n";
+    cout<<"Number of courses:"<<this->getNumCourses()<<"\n";
+    cout<<"Avergae grade:"<<this->getAvgGrade()<<"\n";
     this->printGrade();
 }
